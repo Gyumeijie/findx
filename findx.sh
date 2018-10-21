@@ -31,6 +31,8 @@ function sparateExecCommad() {
 
 # Prevent pathname expansion and avoid `paths must precede expression`
 data=$(sed "s:-name[ ]*\([^ \)]*\):-name \'\1\':g" <<<"$@")
+# Remove \; to ;
+data=$(sed "s:\\\\;:;:" <<< "$data")
 
 re='-exec[^;]*;'
 if [[ $data =~ $re ]];
