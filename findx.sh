@@ -29,9 +29,11 @@ function sparateExecCommad() {
   echo "$ret"
 }
 
+# Prevent pathname expansion and avoid `paths must precede expression`
+data=$(sed "s:-name[ ]*\([^ \)]*\):-name \'\1\':g" <<<"$@")
 
 re='-exec[^;]*;'
-if [[ $@ =~ $re ]];
+if [[ $data =~ $re ]];
 then
   tempfile="/tmp/tempfile$$.sh"
   touch $tempfile && chmod u+x $tempfile
@@ -39,17 +41,17 @@ then
   # Extract -exec comannd and save all them to the tempfile
   echo "#! /bin/bash" >> $tempfile
   # Multi -exec commands sparated by '\n'
-  exec=$(sed "s:[^;]*-exec \([^;]*\);:\1\\\n:g" <<< "$@")
+  exec=$(sed "s:[^;]*-exec \([^;]*\);:\1\\\n:g" <<< "$data")
   echo -e $(sparateExecCommad "$exec") >> $tempfile
 
   # Reconstruct command: remove -exec commands and append a new one
-  cmd=$(sed "s:\(-exec [^;]*;\): :g" <<< "$@")
-  cmd=" ${cmd} -exec $tempfile {} ;"
-
+  cmd=$(sed "s:\(-exec [^;]*;\): :g" <<< "$data")
+  cmd=" ${cmd} -exec $tempfile {} \;"
+  
   # Finally execute the find command
-  find $cmd
+  eval find $cmd
 else
-  find $@
+  eval find $data
 fi
 
 rm -f $tempfile
