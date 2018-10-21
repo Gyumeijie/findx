@@ -1,0 +1,28 @@
+{
+  "name": "findx",
+  "version": "1.0.0",
+  "description": "extension of the find command",
+  "main": "findx.sh",
+  "scripts": {
+    "test": ""
+  },
+  "bin": {
+    "findx": "findx.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gyumeijie/findx.git"
+  },
+  "keywords": [
+    "extension",
+    "find",
+    "commandline",
+    "cli"
+  ],
+  "author": "Gyumeijie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gyumeijie/findx/issues"
+  },
+  "homepage": "https://github.com/Gyumeijie/findx#readme"
+}
