@@ -59,4 +59,4 @@ findx /tmp/test/find -name "*.jpg" -exec 'name=${file%.*}, mv $file ${name}.png;
 ```
 # Guide
 
-Theoretically, we can use any valid shell commands inside `-exec`, but we don't recommand writing a string of commands in this way, the preferred way is to use a shell script file which includes these commands.
+Theoretically, we can use **any valid shell commands** inside `-exec`, but we don't recommand writing a string of commands in this way, the preferred way is to use a shell script file which includes these commands.
