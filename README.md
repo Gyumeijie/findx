@@ -41,7 +41,7 @@ For example, give `/tmp/test/find` has the following structure:
 Now we what to change the suffix of these files to png, with **findx** we can do this:
 
 ```
-findx /tmp/test/find -name "*.jpg" -exec 'name=${1%%.*}, mv $1 ${name}.png;'
+findx /tmp/test/find -name "*.jpg" -exec 'name=${1%.*}, mv $1 ${name}.png;'
 ```
 
 ```
