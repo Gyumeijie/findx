@@ -20,8 +20,8 @@ Currently, `findx` extents the `-exec` of `find`.
 ```bash 
 findx /path/to/find -exec 'cmd1, cmd2, cmd3;' -exec 'cmd4, cmd5;'
 ```
-command can reference each matched file by `$1`. Use `,` to separate command, and `;` or `\;` to terminate.
-> `;` is recommended.
+command can reference each matched file by `$1`. Use `,` to separate command, and `;` or `\;` to terminate(`;` is recommended.).
+> Caveat: please use `' '` to enclose commands instead of `" "`. :exclamation::exclamation::exclamation:
 
 For example, give `/tmp/test/find` has the following structure:
 
