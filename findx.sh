@@ -42,6 +42,7 @@ then
 
   # Extract -exec comannd and save all them to the tempfile
   echo "#! /bin/bash" >> $tempfile
+  echo 'file=$1 && shift' >> $tempfile
   # Multi -exec commands sparated by '\n'
   exec=$(sed "s:[^;]*-exec \([^;]*\);:\1\\\n:g" <<< "$data")
   echo -e $(sparateExecCommad "$exec") >> $tempfile
