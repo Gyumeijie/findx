@@ -38,7 +38,7 @@ For example, give `/tmp/test/find` has the following structure:
 ├── example8.jpg
 └── example9.jpg
 ```
-Now we what to change the suffix of these files to png, with **findx** we can do this:
+Now we want to change the suffix of these files to png, with **findx** we can do this:
 
 ```
 findx /tmp/test/find -name "*.jpg" -exec 'name=${1%.*}, mv $1 ${name}.png;'
@@ -57,3 +57,6 @@ findx /tmp/test/find -name "*.jpg" -exec 'name=${1%.*}, mv $1 ${name}.png;'
 ├── example8.png
 └── example9.png
 ```
+# Guide
+
+Theoretically, we can use any valid shell commands inside `-exec`, but we don't recommand writing a string of commands in this way, the preferred way is to use a shell script file which includes these commands.
