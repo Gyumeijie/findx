@@ -8,9 +8,9 @@ $ npm install -g findx
 or      
 
 ```bash
- git clone https://github.com/Gyumeijie/findx.git
- cd findx
- ./install
+$ git clone https://github.com/Gyumeijie/findx.git
+$ cd findx
+$ ./install
 ```
 > Using `npm` is recommended, for it is easy to uninstall and upgrade.
 
