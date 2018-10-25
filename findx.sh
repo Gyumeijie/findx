@@ -1,7 +1,7 @@
 #! /bin/bash
 
-# Sparate comma-sparated exec commands, e.g. -exec 'cmd1, cmd2, cmd3;'
-function sparateExecCommad() {
+# Separate comma-separated exec commands, e.g. -exec 'cmd1, cmd2, cmd3;'
+function separateExecCommad() {
   local string=$1
   local len=${#string}
   local range=`eval echo {0..$((len-1))}`
@@ -43,9 +43,9 @@ then
   # Extract -exec comannd and save all them to the tempfile
   echo "#! /bin/bash" >> $tempfile
   echo 'readonly file=$1 && shift' >> $tempfile
-  # Multi -exec commands sparated by '\n'
+  # Multi -exec commands separated by '\n'
   exec=$(sed "s:[^;]*-exec \([^;]*\);:\1\\\n:g" <<< "$data")
-  echo -e $(sparateExecCommad "$exec") >> $tempfile
+  echo -e $(separateExecCommad "$exec") >> $tempfile
 
   # Reconstruct command: remove -exec commands and append a new one
   cmd=$(sed "s:\(-exec [^;]*;\): :g" <<< "$data")
