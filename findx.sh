@@ -39,6 +39,7 @@ if [[ $data =~ $re ]];
 then
   tempfile="/tmp/tempfile$$.sh"
   touch $tempfile && chmod u+x $tempfile
+  trap "rm -f $tempfile" INT
 
   # Extract -exec comannd and save all them to the tempfile
   echo "#! /bin/bash" >> $tempfile
