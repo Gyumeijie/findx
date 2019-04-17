@@ -16,7 +16,7 @@ $ ./install
 
 # Usage
 
-Currently, `findx` extents the `-exec` of `find`.
+Currently, `findx` extents the `-exec` of `find`. 
 
 ```bash 
 findx /path/to/find -exec 'cmd1, cmd2, cmd3;' -exec 'cmd4, cmd5;'
@@ -39,7 +39,7 @@ For example, give `/tmp/test/find` has the following structure:
 ├── example8.jpg
 └── example9.jpg
 ```
-Now we want to change the suffix of these files to png, with **findx** we can do this:
+Take as an example changing the suffix of these files to `png`, with **findx** we can do this:
 
 ```
 findx /tmp/test/find -name "*.jpg" -exec 'name=${file%.*}, mv $file ${name}.png;'
